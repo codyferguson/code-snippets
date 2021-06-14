@@ -26,8 +26,17 @@ namespace csharp.DataStructures
         }
 
         // add to tree
+        public void add(string element)
+        {
+            Node node = new Node();
+            node.value = element;
+        }
 
         // delete from tree
+        public void remove()
+        {
+
+        }
 
         // pruning and grafting maybe
 
