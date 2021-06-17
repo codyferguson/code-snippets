@@ -18,14 +18,14 @@ namespace csharp
             lastElement = 0;
         }
 
-        public void push(string element) {
+        public void Push(string element) {
             if (lastElement + 1 == stackSize) {
                 // double array size
             }
             stackArray[lastElement++] = element;
         }
 
-        public string pop() {
+        public string Pop() {
             string element = "empty";
 
             if (lastElement > -1) {
@@ -35,7 +35,7 @@ namespace csharp
             return element;
         }
 
-        public string peak() {
+        public string Peak() {
             string element = "empty";
 
             if (lastElement > -1) {
