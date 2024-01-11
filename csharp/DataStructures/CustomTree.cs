@@ -4,122 +4,122 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace csharp.DataStructures
+namespace csharp.DataStructures;
+
+class CustomBinaryTree
 {
-    class CustomBinaryTree
+    private class Node
     {
-        private class Node
-        {
-            public int value;
-            public Node left, right;
+        public int value;
+        public Node left, right;
 
-            public Node(int val) {
-                value = val;
-                left = right = null;
-            }
+        public Node(int val) {
+            value = val;
+            left = right = null;
         }
+    }
 
-        private Node root;
+    private Node root;
 
-        public CustomBinaryTree(int key) {
-            root = new Node(key);
-        }
+    public CustomBinaryTree(int key) {
+        root = new Node(key);
+    }
 
-        public CustomBinaryTree()
+    public CustomBinaryTree()
+    {
+        root = null;
+    }
+
+    public void insert(int element)
+    {
+        
+        if(root == null)
         {
-            root = null;
-        }
-
-        public void insert(int element)
+            root = new Node(element);
+        } 
+        else
         {
-            
-            if(root == null)
+            Node newNode = new Node(element);
+
+            Queue<Node> traversalQueue = new Queue<Node>();
+            traversalQueue.Enqueue(root);
+
+            Node treeNode;
+            while(traversalQueue.Count != 0)
             {
-                root = new Node(element);
-            } 
-            else
-            {
-                Node newNode = new Node(element);
+                treeNode = traversalQueue.Dequeue();
 
-                Queue<Node> traversalQueue = new Queue<Node>();
-                traversalQueue.Enqueue(root);
-
-                Node treeNode;
-                while(traversalQueue.Count != 0)
+                if (treeNode.left == null)
                 {
-                    treeNode = traversalQueue.Dequeue();
-
-                    if (treeNode.left == null)
-                    {
-                        treeNode.left = newNode;
-                        break;
-                    }
-                    else
-                        traversalQueue.Enqueue(treeNode.left);
-
-                    if (treeNode.right == null)
-                    {
-                        treeNode.right = newNode;
-                        break;
-                    }
-                    else
-                        traversalQueue.Enqueue(treeNode.right);
+                    treeNode.left = newNode;
+                    break;
                 }
+                else
+                    traversalQueue.Enqueue(treeNode.left);
+
+                if (treeNode.right == null)
+                {
+                    treeNode.right = newNode;
+                    break;
+                }
+                else
+                    traversalQueue.Enqueue(treeNode.right);
             }
         }
+    }
 
-        // delete from tree
-        public void remove(string element)
-        {
-            // search for matching node
+    // delete from tree
+    public void remove(string element)
+    {
+        // search for matching node
 
-            // remove that node
+        // remove that node
 
+    }
+
+    // Should prune then rebalance tree
+    public void PruneTreeAtNode()
+    {
+
+    }
+
+    // After grafting, should balance tree
+    public void GraftTree(int element)
+    {
+
+    }
+
+    public void PrintInOrder()
+    {
+        if (root == null) {
+            Console.Write("Tree is empty");
+            return;
         }
+        InOrder(root);
+    }
 
-        // Should prune then rebalance tree
-        public void PruneTreeAtNode()
-        {
+    private void InOrder(Node node)
+    {
+        if (node == null)
+            return;
 
-        }
+        InOrder(node.left);
+        Console.Write(node.value + " ");
+        InOrder(node.right);
+    }
 
-        // After grafting, should balance tree
-        public void GraftTree(int element)
-        {
+    private void RebalanceTree()
+    {
 
-        }
+    }
 
-        public void PrintInOrder()
-        {
-            if (root == null)
-                Console.Write("Tree is empty");
-                return;
-            InOrder(root);
-        }
+    private Node BreadthFirstSearch()
+    {
+        return null;
+    }
 
-        private void InOrder(Node node)
-        {
-            if (node == null)
-                return;
-
-            InOrder(node.left);
-            Console.Write(node.value + " ");
-            InOrder(node.right);
-        }
-
-        private void RebalanceTree()
-        {
-
-        }
-
-        private Node BreadthFirstSearch()
-        {
-            return null;
-        }
-
-        private Node DepthFirstSearch()
-        {
-            return null;
-        }
+    private Node DepthFirstSearch()
+    {
+        return null;
     }
 }
