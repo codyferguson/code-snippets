@@ -25,4 +25,12 @@ public class ScratchPadForProblemsTests {
         List<int> numbers = items.ToList();
         return _scratchPadForProblems.CountItemsInList(numbers);
     }
+
+    [TestCase(new int[] {3}, ExpectedResult = 3)]
+    [TestCase(new int[] {5, 3, 1, 2}, ExpectedResult = 5)]
+    [TestCase(new int[] { -1, 6, 1, 11}, ExpectedResult = 11)]
+    public int ScratchPadForProblems_ValidLists_ShouldReturnExpectedResult(int[] items) {
+        List<int> numbers = items.ToList();
+        return _scratchPadForProblems.MaxNumberInList(numbers);
+    }
 }

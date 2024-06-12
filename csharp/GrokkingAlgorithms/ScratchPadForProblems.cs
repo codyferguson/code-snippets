@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace csharp.GrokkingAlgorithms; 
 public class ScratchPadForProblems {
@@ -17,8 +19,16 @@ public class ScratchPadForProblems {
     }
 
     public int MaxNumberInList(List<int> numbers) {
-        // TODO: 
-        return 0;
+
+        if (numbers.Count == 1) return numbers[0];
+
+        if (numbers.Count == 2) {
+            return (numbers[0] >= numbers[1]) ? numbers[0] : numbers[1];
+        } else {
+            int left = MaxNumberInList(numbers);
+            int right = MaxNumberInList(numbers);
+            return left >= right ? left : right;
+        }
     }
 }
 
